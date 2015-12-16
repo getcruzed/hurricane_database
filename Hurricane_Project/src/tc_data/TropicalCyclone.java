@@ -14,6 +14,6 @@ public class TropicalCyclone {
 	 * Attributes for TropicalCyclones
 	 */
 	
-	// Here we go
+	
 
 }
