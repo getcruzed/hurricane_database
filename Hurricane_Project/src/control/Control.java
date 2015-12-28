@@ -70,6 +70,30 @@ public class Control {
 		hr.rad_64_NW = Integer.parseInt( scanner.next().trim() );
 		
 	}
+	
+	/**
+	 * Tests for whether or not the storm underwent rapid intensification.
+	 * 
+	 * @param TropicalCyclone object
+	 * @return true if storm underwent RI, false otherwise.
+	 * @throws IOException
+	 */
+	public static boolean testForRI( TropicalCyclone storm ) {
+		
+		int numHours = storm.lifetime.size();
+		int dv = 0;
+		
+		for( int i = 0; i < numHours - 4; i++ ) {
+			dv = ( storm.lifetime.get(i + 3).max_sus_wind ) -
+					( storm.lifetime.get( i ).max_sus_wind );
+			if( dv >= 30 ) {
+				return true;
+			}
+		}
+		
+		// No RI period detected.
+		return false;
+	}
 
 	// Main.
 	public static void main(String[] args) throws IOException {
@@ -123,6 +147,10 @@ public class Control {
 				createHour( scanner, hr );
 				temp.addHour( hr );
 			}
+			
+			// Analyze whether the storm underwent rapid intensification
+			// Loose definition: 30kts in 24 hrs ( v(t2) - v(t1) >= 30 )
+			testForRI( temp );
 			
 			// Ensure entries added is entries detected.
 			System.out.println( "Entries added: " + temp.lifetime.size() );

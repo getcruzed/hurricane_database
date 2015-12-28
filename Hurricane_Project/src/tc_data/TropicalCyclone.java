@@ -2,7 +2,7 @@ package tc_data;
 
 import java.util.ArrayList;
 
-public class TropicalCyclone {
+public class TropicalCyclone extends TCDatabase {
 	
 	/**
 	 * This will maintain the object of each storm. 
