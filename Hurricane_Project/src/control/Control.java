@@ -6,6 +6,7 @@ import java.util.*;
 
 import tc_data.Hour;
 import tc_data.TropicalCyclone;
+import file_handle.FileHandler;
 
 
 /**
@@ -18,11 +19,23 @@ import tc_data.TropicalCyclone;
 
 public class Control {
 	
-	/**
-	 * SET PATH HERE.
-	 * 
-	 */
-	static String path = "C:\\Users\\thomashinson\\Documents\\MyProject\\hurdat\\";
+	/** * * * * * * * * * *
+	 * SET PATHS HERE.	  *
+	 * * * * * * * * * * **/
+	//static String path = "C:\\Users\\thomashinson\\Documents\\MyProject\\hurdat\\";
+	static String path = null;
+
+	/** * * * * * * * * * *
+	 * DO YOU NEED STORM FILES
+	 * CREATED?
+	 * true = individual storm
+	 * files will be created for
+	 * each storm.
+	 *
+	 * false = storms only added
+	 * to database.
+	 * * * * * * * * * * **/
+	static boolean createStormFiles = false;
 	
 	/**
 	 * ArrayList of TropicalCyclones
@@ -106,6 +119,13 @@ public class Control {
 		System.out.print("Please enter your input file name: ");
 		System.out.flush();
 			String infile = cin.nextLine();
+
+		/* * * * * * * * * * * * * * * * */
+		/* Storm file generator 
+		/* * * * * * * * * * * * * * * * */
+		if( createStormFiles == true ) {
+			createIndStormFiles( path, infile );
+		}
 		
 		/* Open file */
 		File file = new File( path + infile );

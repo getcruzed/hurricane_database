@@ -48,6 +48,26 @@ public class TropicalCyclone extends TCDatabase {
 		// Add to array list.
 		lifetime.add( hr );
 	}
+
+	/**
+	* Program to send a tropical cyclone to file.
+	*/
+	public void TCtoFile( TropicalCyclone tc ) {
+
+		
+		// // Create a file
+		// String filename = "" + tc.name + "_" + tc.year + ".txt";
+		// File outfile = new File( filename );
+		// FileWriter fWriter = new FileWriter( outfile );
+		// PrintWriter pWriter = new PrintWriter( fWriter );
+		
+
+		/*
+		* Write header.
+		*/
+		//pWriter.println( tc.name;		
+		
+	}
 	
 	
 	
